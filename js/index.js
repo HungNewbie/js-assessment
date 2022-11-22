@@ -47,7 +47,7 @@ window.addEventListener('DOMContentLoaded', () => {
     {
       q: 'What is the largest continent in size?',
       o: ['Asia', 'Africa', 'Europe', 'North America'],
-      a: 2,
+      a: 0,
     },
     {
     q: 'Which country host World Cup 2022?',
