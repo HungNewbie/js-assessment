@@ -1,0 +1,9 @@
+.display-score {
+    margin: 10px auto;
+}
+.sText, .sBox {
+    text-align: center;
+    padding: 5px;
+    color: red;
+}
+

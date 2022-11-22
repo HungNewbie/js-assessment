@@ -40,10 +40,20 @@ window.addEventListener('DOMContentLoaded', () => {
       a: 3,
     },
     {
-      q: 'What is the capital of Australia',
+      q: 'What is the capital of Australia?',
       o: ['Sydney', 'Canberra', 'Melbourne', 'Perth'],
       a: 1,
     },
+    {
+      q: 'What is the largest continent in size?',
+      o: ['Asia', 'Africa', 'Europe', 'North America'],
+      a: 2,
+    },
+    {
+    q: 'Which country host World Cup 2022?',
+    o: ['Qatar', 'Saudi Arabia', 'Vietnam', 'Timor Leste'],
+    a: 0,
+    }
   ];
 
   // function to Display the quiz questions and answers from the object
@@ -76,14 +86,50 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (quizItem.a == i) {
           //change background color of li element here
+          document.querySelector('#' + li).style.backgroundColor = 'grey';
         }
 
+        
         if (radioElement.checked) {
           // code for task 1 goes here
-        }
+          if (quizItem.a == i) {
+          score++;
+          }
+          currentScore.innerHTML = score;    
+      }
       }
     });
   };
+
+  let submitBtn = document.getElementById('btnSubmit');
+  submitBtn.onclick = function(){
+    
+    clearInterval(interval);
+    document.getElementById('timeText').innerHTML="Well Done! You completed the quiz!"
+    calculateScore();
+  }
+
+let resetBtn = document.getElementById('btnReset');
+resetBtn.onclick = function() {
+  location.reload();
+  currentScore.innerHTML = 0;
+}
+
+
+const totalMinute = 1;
+let count = totalMinute * 60;
+let interval = setInterval(timeRemain, 1000);
+function timeRemain() {
+  const minute = Math.floor(count / 60);
+  let second = count % 60;
+  document.getElementById('time').innerHTML=`0${minute} : ${second}`;
+  count--;
+  if (count === 0){
+    clearInterval(interval);
+    document.getElementById('timeText').innerHTML='Time is up!';
+    calculateScore();
+  };
+}
 
   // call the displayQuiz function
   displayQuiz();
