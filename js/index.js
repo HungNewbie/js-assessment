@@ -30,30 +30,35 @@ window.addEventListener('DOMContentLoaded', () => {
   // Basic ideas from https://code-boxx.com/simple-javascript-quiz/
   const quizArray = [
     {
-      q: 'Which is the third planet from the sun?',
-      o: ['Saturn', 'Earth', 'Pluto', 'Mars'],
-      a: 1, // array index 1 - so Earth is the correct answer here
+      q: 'What is the name of the serial killer from the movie Terrifier?',
+      o: ['Beppi the Clown', 'Art the Clown', 'Chuckles the Clown', 'Pennywise the Clown'],
+      a: 1, 
     },
     {
-      q: 'Which is the largest ocean on Earth?',
-      o: ['Atlantic Ocean', 'Indian Ocean', 'Arctic Ocean', 'Pacific Ocean'],
+      q: 'How many seasons does Buffy the Vampire Slayer have?',
+      o: ['3', '5', '7', '9'],
+      a: 2,
+    },
+    {
+      q: "What's happened with the boy at the beginning of the first episode of Buffy the Vampire Slayer?",
+      o: ['He became a vampire', 'Nothing happened', 'No one saw him again', 'He died'],
       a: 3,
     },
     {
-      q: 'What is the capital of Australia?',
-      o: ['Sydney', 'Canberra', 'Melbourne', 'Perth'],
+      q: 'How did Dave and Mitch end up switching their bodies in The Change-up movie?',
+      o: ['A witch put a curse on them', 'Peeing on a wishing fountain', 'A genie from a lamp granted their wishes', 'They have superpower that can swap bodies whenever they want'],
       a: 1,
     },
     {
-      q: 'What is the largest continent in size?',
-      o: ['Asia', 'Africa', 'Europe', 'North America'],
-      a: 0,
+    q: 'Who is the Watcher in the Watcher tv series (2022)?',
+    o: ['No one know', 'Dean', 'Theodora', 'Roger'],
+    a: 0,
     },
     {
-    q: 'Which country host World Cup 2022?',
-    o: ['Qatar', 'Saudi Arabia', 'Vietnam', 'Timor Leste'],
-    a: 0,
-    }
+      q: 'What item causing the demon curse from the movie The Conjuring 3?',
+      o: ['A Horcrux', 'A Skull', 'A Doll', 'A Totem'],
+      a: 3,
+      }
   ];
 
   // function to Display the quiz questions and answers from the object
@@ -72,10 +77,10 @@ window.addEventListener('DOMContentLoaded', () => {
       quizWrap.innerHTML = quizDisplay;
     });
   };
-
+  let score = 0;
   // Calculate the score
   const calculateScore = () => {
-    let score = 0;
+    
     quizArray.map((quizItem, index) => {
       for (let i = 0; i < 4; i++) {
         //highlight the li if it is the correct answer
@@ -86,7 +91,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (quizItem.a == i) {
           //change background color of li element here
-          document.querySelector('#' + li).style.backgroundColor = 'grey';
+          document.querySelector('#' + li).style.backgroundColor = 'silver';
         }
 
         
@@ -97,6 +102,7 @@ window.addEventListener('DOMContentLoaded', () => {
           }
           currentScore.innerHTML = score;    
       }
+      radioElement.disabled = true;
       }
     });
   };
@@ -105,8 +111,8 @@ window.addEventListener('DOMContentLoaded', () => {
   submitBtn.onclick = function(){
     
     clearInterval(interval);
-    document.getElementById('timeText').innerHTML="Well Done! You completed the quiz!"
-    calculateScore();
+    calculateScore();   
+    document.getElementById('timeText').innerHTML=`Well done Claire! You completed the quiz on time! Your score is ${score}.`
   }
 
 let resetBtn = document.getElementById('btnReset');
@@ -116,7 +122,7 @@ resetBtn.onclick = function() {
 }
 
 
-const totalMinute = 1;
+const totalMinute = 6;
 let count = totalMinute * 60;
 let interval = setInterval(timeRemain, 1000);
 function timeRemain() {
@@ -126,8 +132,8 @@ function timeRemain() {
   count--;
   if (count === 0){
     clearInterval(interval);
-    document.getElementById('timeText').innerHTML='Time is up!';
-    calculateScore();
+    calculateScore();   
+    document.getElementById('timeText').innerHTML=`Too bad, time's up Claire! Your score is ${score}.`;
   };
 }
 
