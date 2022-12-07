@@ -112,7 +112,7 @@ window.addEventListener('DOMContentLoaded', () => {
     
     clearInterval(interval);
     calculateScore();   
-    document.getElementById('timeText').innerHTML=`Well done Claire! You completed the quiz on time! Your score is ${score}.`
+    document.getElementById('timeText').innerHTML=`Well done! You completed the quiz on time! Your score is ${score}.`
   }
 
 let resetBtn = document.getElementById('btnReset');
@@ -122,7 +122,7 @@ resetBtn.onclick = function() {
 }
 
 
-const totalMinute = 6;
+const totalMinute = 3;
 let count = totalMinute * 60;
 let interval = setInterval(timeRemain, 1000);
 function timeRemain() {
@@ -133,7 +133,7 @@ function timeRemain() {
   if (count === 0){
     clearInterval(interval);
     calculateScore();   
-    document.getElementById('timeText').innerHTML=`Too bad, time's up Claire! Your score is ${score}.`;
+    document.getElementById('timeText').innerHTML=`Too bad, time's up! Your score is ${score}.`;
   };
 }
 
